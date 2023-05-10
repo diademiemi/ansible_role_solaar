@@ -5,6 +5,14 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Example assertion
-      ansible.builtin.assert:
-        that: true
+    - name: Check if /usr/bin/solaar exists
+      ansible.builtin.stat:
+        path: /usr/bin/solaar
+      register: solaar_stat
+
+    - name: Fail if solaar does not exist
+      ansible.builtin.fail:
+        msg: "Test failed"
+      when: not solaar_stat.stat.exists
+
+...

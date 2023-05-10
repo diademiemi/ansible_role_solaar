@@ -1,0 +1,21 @@
+---
+- name: Ensure GPG is installed
+  become: true
+  ansible.builtin.apt:
+    name: gpg-agent
+    state: present
+
+- name: Add Solaar PPA
+  become: true
+  ansible.builtin.apt_repository:
+    repo: ppa:solaar-unifying/stable
+    state: present
+
+- name: Install solaar
+  become: true
+  ansible.builtin.apt:
+    name: solaar
+    state: present
+    update_cache: true
+
+...

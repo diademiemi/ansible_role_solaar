@@ -1,0 +1,8 @@
+---
+- name: Install solaar
+  become: true
+  ansible.builtin.apt:
+    name: solaar
+    state: present
+
+...

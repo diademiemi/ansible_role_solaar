@@ -1,11 +1,13 @@
 Ansible Role Template
 =========
 
-[![Molecule Test](https://github.com/diademiemi/ansible_role_template/actions/workflows/molecule.yml/badge.svg)](https://github.com/diademiemi/ansible_role_template/actions/workflows/molecule.yml)
+[![Molecule Test](https://github.com/diademiemi/ansible_role_solaar/actions/workflows/molecule.yml/badge.svg)](https://github.com/diademiemi/ansible_role_solaar/actions/workflows/molecule.yml)
 
-This is an Ansible role to install and configure template.
+This is an Ansible role to install solaar, the Linux Logitech Unifying Receiver utility.
 
-Include more information about template in this section.
+This role imports my `diademiemi.epel` role for RHEL systems.  
+
+On Ubuntu, RHEL systems and Fedora the latest version of solaar is installed from Solaar supported repositories. On Debian, the Solaar version may be outdated.  
 
 Requirements
 ------------
@@ -42,10 +44,10 @@ Example Playbook
 ----------------
 
 ```yaml
-- name: Use template role
-  hosts: "{{ target | default('template') }}"
+- name: Use solaar role
+  hosts: "{{ target | default('solaar') }}"
   roles:
-    - diademiemi.template
+    - diademiemi.solaar
 ```
 
 License
@@ -74,32 +76,3 @@ molecule test
 
 These tests are automatically ran by GitHub Actions on push. If the tests are successful, the role is automatically published to Ansible Galaxy.
 
-GitHub Actions is supposed to fail for this template repository, as it does not contain any meaningful role. There is an explicit assertion to check if the role name has been changed from `template` which causes the test to fail.    
-
-Role Structure
---------------
-
-Roles have an entrypoint `main.yml` which includes other files.  
-It searches for files in `vars/`, `tasks/assert/` and `tasks/setup` for files named like the host platform. If no file is found, it falls back to `default.yml`.  
-
-This is an easy way to provide distro-specific variables, assertions and tasks and allows me to keep the role structure clean.  
-
-Using Template
---------------
-To use this template for a new role, run
-```bash
-export NEW_ROLE_NAME="NEW_NAME"
-export GITHUB_USER="diademiemi"
-export GALAXY_API_KEY="YOUR_API_KEY"
-
-find . -type f -exec sed -i "s/diademiemi/${GITHUB_USER}/g" {} + # Do not run this more than once
-find . -type f -exec sed -i "s/template/${NEW_ROLE_NAME}/g" {} + # Do not run this more than once
-
-# Assumes repo is named ansible_role_${NEW_ROLE_NAME}
-gh secret set GALAXY_API_KEY -R ${GITHUB_USER}/ansible_role_${NEW_ROLE_NAME} -a actions -b ${GALAXY_API_KEY}
-
-# Remove this section from README.md
-sed -i "/Role Structure/Q" README.md
-```
-
-This is also provided as a script as `replace.sh`.  
