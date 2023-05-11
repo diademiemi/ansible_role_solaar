@@ -2,8 +2,6 @@
 - name: Import EPEL role
   ansible.builtin.include_role:
     name: diademiemi.epel
-  vars:
-    __role_action_task: ""
 
 - name: Install solaar
   become: true
