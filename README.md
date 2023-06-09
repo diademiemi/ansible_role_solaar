@@ -44,10 +44,12 @@ Example Playbook
 ----------------
 
 ```yaml
-- name: Use solaar role
+- name: Use diademiemi.solaar role
   hosts: "{{ target | default('solaar') }}"
   roles:
-    - diademiemi.solaar
+    - role: "diademiemi.solaar"
+      tags: ['diademiemi', 'solaar', 'setup']
+
 ```
 
 License
