@@ -20,7 +20,7 @@ These platforms are supported:
 - EL 9 (Tested on Rocky Linux 9)  
 - Fedora 38  
 
-<!-- 
+<!--
 - List hardware requirements here  
 -->
 
@@ -77,4 +77,3 @@ molecule test
 ```
 
 These tests are automatically ran by GitHub Actions on push. If the tests are successful, the role is automatically published to Ansible Galaxy.
-
