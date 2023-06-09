@@ -12,7 +12,7 @@ On Ubuntu, RHEL systems and Fedora the latest version of solaar is installed fro
 Requirements
 ------------
 These platforms are supported:
-- Ubuntu 20.04  
+<!-- - Ubuntu 20.04   -->
 - Ubuntu 22.04  
 - Debian 10  
 - Debian 11  
